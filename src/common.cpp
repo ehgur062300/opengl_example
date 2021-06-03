@@ -26,6 +26,11 @@ glm::vec3 GetAttenuationCoeff(float distance) {
     auto dvec = glm::vec4(1.0f, d, d*d, d*d*d);
     float kl = glm::dot(linear_coeff, dvec);
     float kq = glm::dot(quad_coeff, dvec);
+    
 
     return glm::vec3(kc, glm::max(kl, 0.0f), glm::max(kq*kq, 0.0f));
+}
+
+float RandomRange(float minValue, float maxValue) {
+    return ((float)rand() / (float)RAND_MAX) * (maxValue - minValue) + minValue;
 }
